@@ -12,7 +12,6 @@ De-identified data is included in the `data` directory.
 1. Download `data` and `code` directories
 2. Set `data` as the working directory
 3. Run script in Rstudio.  These scripts will generate the figures presented in our manuscript.\
-\
 
 ## System requirements and software
 R	The Comprehensive R Archive Network	v3.6.1\
