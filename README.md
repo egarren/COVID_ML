@@ -16,3 +16,10 @@ De-identified data is included in the `data` directory.
 ## System requirements and software
 R	The Comprehensive R Archive Network	v3.6.1\
 Rstudio 	Rstudio, Inc.	v1.2.1578\
+ggpubr (version 0.4.0)\
+corrplot (version 0.84)\
+survminer (version 0.4.8) \
+survival (version 3.2-7)\
+ggplot2 (version 3.3.0)\
+pheatmap (version 1.0.12)\
+EnhancedVolcano (version 1.4.0) \
