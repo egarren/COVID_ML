@@ -10,7 +10,7 @@ Example de-identified data is included in the `deID.clem.csv` file.  Note that s
 
 ## Instructions
 1. Download `deID.clem.csv` and `deID.analysis.R` files
-2. Run script in Rstudio.  This script will generate the figures presented in our manuscript.
+2. Run `deID.analysis.R` in Rstudio.  This script will generate the figures presented in our manuscript.
 
 ## System requirements and software
 R	The Comprehensive R Archive Network	v3.6.1\
