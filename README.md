@@ -22,4 +22,4 @@ survminer (version 0.4.8) \
 survival (version 3.2-7)\
 ggplot2 (version 3.3.0)\
 pheatmap (version 1.0.12)\
-EnhancedVolcano (version 1.4.0) \
+EnhancedVolcano (version 1.4.0) 
