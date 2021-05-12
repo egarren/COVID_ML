@@ -6,7 +6,7 @@ This repository contains the de-identified data and code used in our retrospecti
 No installation necessary
 
 ## Demo
-De-identified data is included in the `data` directory.  Note that some variables have been removed to preserve patient privacy.
+Example de-identified data is included in the `data` directory.  Note that some variables have been removed to preserve patient privacy.
 
 ## Instructions
 1. Download `data` and `code` directories
