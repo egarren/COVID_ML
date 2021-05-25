@@ -6,11 +6,11 @@ This repository contains the de-identified data and code used in our retrospecti
 No installation necessary
 
 ## Demo
-Example de-identified data is included in the `deID.clem.csv` file.  Note that some variables have been removed to preserve patient privacy.
+Example de-identified data is included in the `deID.clem.xlsx` file.  Note that some variables have been removed to preserve patient privacy.
 
 ## Instructions
-1. Download `deID.clem.csv` and `deID.analysis.R` files
-2. Run `deID.analysis.R` in Rstudio.  This script will generate the figures presented in our manuscript.
+1. Download `deID.clem.xlsx` and `deID.analysis.R` files
+2. Run `deID.analysis.R` in Rstudio.  This script will generate the figures presented in our manuscript.  Note that script has been modified to account for variables removed from dataset for patient privacy.
 
 ## System requirements and software
 R	The Comprehensive R Archive Network	v3.6.1\
