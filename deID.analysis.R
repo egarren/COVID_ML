@@ -112,18 +112,17 @@ save_pheatmap_png <- function(x, filename, width,height, res = 400) {
 dir.create("stats")
 
 #load data
-df.test<-read.csv("deID.clem.csv",stringsAsFactors = F,header=T)
+df.test<-read_excel("deID.clem.xlsx",sheet="data")
 
 #####ANALYSIS
 
 #define variables of interest
-lab.names<-colnames(masterdf)[623:701]
+df<-df.test
 outcome.num<-unique(c("tempdurhome","ptc_ox_sat","ptc_gcs","ptc_supp_liters",
                "vs_o2vol","vs_fio2","oxygen_saturation_spo2_v2","ventdays","icu_days",
                "pd_calc_icu_days","icu.count","ordscore","length_stay","time_to_fu","enc.count",
                grep(paste(c("floor","min","max","avg"),collapse="|"),colnames(df),value=T)))
-vars.num<-unique(c("dem_age","a1c","avg.bmi","age_year","number_immuno_drugs",
-                   lab.names[!grepl("unit",lab.names)],colnames(lab.val)[-1]))
+vars.num<-c("dem_age","a1c","avg.bmi","age_year","number_immuno_drugs",grep(paste(c("min","max","avg"),collapse="|"),colnames(df),value=T))
 outcome.cat<-unique(c("outcome","ordscore","hospvent","patmanicudt","vvecmo","corangio","dschstat","ever_hosp","oc_newstatus","ptc_entry","ptc_present_intubate_yn",
                "ptc_ox_supp_yn","ptc_intubate_yn","causdth","loc","death","vap","ecmo","rrt","were_infiltrates_present",
                "disch_disp_full","poe_o2","poe_vent","inout_cd","ibax_disch_disp desc","death_yn",
@@ -789,8 +788,7 @@ outcome.num<-unique(c("tempdurhome","ptc_ox_sat","ptc_gcs","ptc_supp_liters",
                       "vs_o2vol","vs_fio2","oxygen_saturation_spo2_v2","ventdays","icu_days",
                       "pd_calc_icu_days","icu.count","ordscore","length_stay","time_to_fu","enc.count",
                       grep(paste(c("floor","min","max","avg"),collapse="|"),colnames(df),value=T)))
-vars.num<-unique(c("dem_age","a1c","avg.bmi","age_year","number_immuno_drugs",
-                   lab.names[!grepl("unit",lab.names)],colnames(lab.val)[-1]))
+vars.num<-c("dem_age","a1c","avg.bmi","age_year","number_immuno_drugs",grep(paste(c("min","max","avg"),collapse="|"),colnames(df),value=T))
 outcome.cat<-unique(c("outcome","ordscore","hospvent","patmanicudt","vvecmo","corangio","dschstat","ever_hosp","oc_newstatus","ptc_entry","ptc_present_intubate_yn",
                       "ptc_ox_supp_yn","ptc_intubate_yn","causdth","loc","death","vap","ecmo","rrt","were_infiltrates_present",
                       "disch_disp_full","poe_o2","poe_vent","inout_cd","ibax_disch_disp desc","death_yn",
@@ -896,13 +894,11 @@ ggsave2("umap.png",width=12, height=5,device="png")
 
 ##Machine learning for mortality
 #choose variables to use
-lab.names<-colnames(masterdf)[623:701]
 outcome.num<-unique(c("tempdurhome","ptc_ox_sat","ptc_gcs","ptc_supp_liters",
                       "vs_o2vol","vs_fio2","oxygen_saturation_spo2_v2","ventdays","icu_days",
                       "pd_calc_icu_days","icu.count","ordscore","length_stay","time_to_fu","enc.count",
                       grep(paste(c("floor","min","max","avg"),collapse="|"),colnames(df),value=T)))
-vars.num<-unique(c("dem_age","a1c","avg.bmi","age_year","number_immuno_drugs",
-                   lab.names[!grepl("unit",lab.names)],colnames(lab.val)[-1]))
+vars.num<-c("dem_age","a1c","avg.bmi","age_year","number_immuno_drugs",grep(paste(c("min","max","avg"),collapse="|"),colnames(df),value=T))
 outcome.cat<-unique(c("outcome","ordscore","hospvent","patmanicudt","vvecmo","corangio","dschstat","ever_hosp","oc_newstatus","ptc_entry","ptc_present_intubate_yn",
                       "ptc_ox_supp_yn","ptc_intubate_yn","causdth","loc","death","vap","ecmo","rrt","were_infiltrates_present",
                       "disch_disp_full","poe_o2","poe_vent","inout_cd","ibax_disch_disp desc","death_yn",
@@ -926,7 +922,7 @@ df2<-df[,unique(ML.var)]#unique(vars.num,vars.cat)
 df2<-df2[,colSums(is.na(df2)) != nrow(df2)] #delete cols that entirely empty
 df2<-df2[, sapply(df2, function(col) sum(!is.na(unique(col)))) > 1] #delete columns with only one type of factor
 df2<-df2[,colSums(!is.na(df2)) >500] #delete cols that have less than 600 pts (use 500 if excluding meds)
-df2<-df2[rowSums(is.na(df2))==0, ] #delete cols that have missing data
+df2<-df2[rowSums(is.na(df2))==0, ] #delete rows that have missing data
 df2<-df2[, colSums(is.na(df2))==0] #delete cols that have missing data
 df2<-df2[, sapply(df2, function(col) sum(!is.na(unique(col)))) > 1] #delete columns with only one type of factor
 dim(df2)
