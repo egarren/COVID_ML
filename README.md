@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/366495264.svg)](https://zenodo.org/badge/latestdoi/366495264)
+
 # COVID_ML
 
 This repository contains the de-identified data and code used in our retrospective study: "Unbiased identification of clinical characteristics predictive of COVID-19 severity"
