@@ -4,6 +4,8 @@
 
 This repository contains the de-identified data and code used in our retrospective study: "Unbiased identification of clinical characteristics predictive of COVID-19 severity"
 
+https://pubmed.ncbi.nlm.nih.gov/34089403/
+
 ## Installation guide
 No installation necessary
 
